@@ -9,6 +9,23 @@ calc.prototype.displayResult=function (resultDiv) {
         
 calc.prototype.computeResult=function (form) {
             //alert("Not the same currency");
+
+            //display a alert if the value of a money is < 0
+            if(parseInt(form.elements['v1'].value) < 0 || parseInt(form.elements['v2'].value) < 0 ){
+                window.alert('Money cant be less then 0');
+                //in this case we should stop the calculation
+                return;
+            }
+
+            //display a alert if the currency is not the same
+            if(form.elements['c1'].value != form.elements['c2'].value){
+                window.alert('Not the same currency');
+                //in this case we should stop the calculation
+                return;
+            }
+
+
+
             m1=new money(parseInt(form.elements['v1'].value),
                             form.elements['c1'].value);
             m2=new money(parseInt(form.elements['v2'].value),
@@ -29,7 +46,7 @@ calc.prototype.computeResult=function (form) {
 
                 else {
                     this.message="Unsupported operation "+ops+"";
-                    
+                    window.alert('Unsupported operation');
                 }
             }catch (e) {
                 this.message=e.toString();

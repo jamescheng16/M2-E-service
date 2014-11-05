@@ -1,3 +1,6 @@
+/**
+ * this is the class js for test_computerresults, displayResult,test_computeresults_two_device,test_soustraction
+ */
 module("calc", {
 //	setup:function(){alert("setup moneyOps individual test");},
 //	teardown:function(){alert("teardown moneyOps individual test");}
@@ -114,4 +117,7 @@ test("test_soustraction", 1, function()
         equal(c.message,"Result : 0 (EU)");
     }
 );
+
+
+
 
