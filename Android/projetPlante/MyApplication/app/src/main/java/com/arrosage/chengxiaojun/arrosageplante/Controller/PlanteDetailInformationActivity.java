@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
      */
     private EditText nom_usuel_et, nom_latin_et, frequency_et, room_et;
     private TextView status_tv;
+    private Button save_bt, delete_bt,cancel_bt;
     /**
      * BD entity
      */
@@ -46,6 +48,13 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
         frequency_et = (EditText) findViewById(R.id.frequencyEditText);
         room_et = (EditText) findViewById(R.id.roomeditText);
         status_tv = (TextView) findViewById(R.id.statusTextView);
+        save_bt = (Button)findViewById(R.id.saveButton);
+        cancel_bt = (Button)findViewById(R.id.cancelbutton);
+        delete_bt = (Button)findViewById(R.id.deletebutton);
+
+
+        delete_bt.setVisibility(View.INVISIBLE);
+
         bd = new BD(this);
 
     }
@@ -65,6 +74,8 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
             }
             is_create_mode = false;
             status_tv.setText("Mise à jours information");
+            delete_bt.setVisibility(View.VISIBLE);
+
         } else {
             is_create_mode = true;
             status_tv.setText("Création de une plante");
@@ -104,6 +115,15 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
 
     }
 
+    public void delete(View view){
+        bd.supprimer(plante.getId());
+        Toast.makeText(getApplicationContext(), "Vous avez supprimé le plante  "+nom_usuel_et.getText().toString(),
+                Toast.LENGTH_SHORT).show();
+        finish();
+    }
+    public void cancel(View view){
+        finish();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

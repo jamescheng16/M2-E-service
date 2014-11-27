@@ -20,8 +20,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
-        android:id="@+id/addButton"
+        android:text="Sauvegarder"
+        android:id="@+id/saveButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="save"/>
@@ -32,7 +32,8 @@
         android:layout_height="fill_parent"
         android:layout_below="@+id/statusTextView"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/addButton">
+        android:layout_above="@+id/saveButton"
+        android:id="@+id/linearLayout">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -123,5 +124,26 @@
                 android:gravity="center" />
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supprimer"
+        android:id="@+id/deletebutton"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/saveButton"
+        android:layout_toStartOf="@+id/saveButton"
+        android:onClick="delete"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retour"
+        android:id="@+id/cancelbutton"
+        android:layout_toRightOf="@+id/saveButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout"
+        android:onClick="cancel"/>
 
 </RelativeLayout>
