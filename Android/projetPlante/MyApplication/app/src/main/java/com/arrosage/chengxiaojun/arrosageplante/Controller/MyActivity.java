@@ -43,7 +43,7 @@ public class MyActivity extends ActionBarActivity {
         super.onStart();
         cursor = bd.getCursor();
         planteList = bd.getPlantes();
-        mySimpleAdapter = new MySimpleAdapter(this,cursor);
+        mySimpleAdapter = new MySimpleAdapter(this,cursor,planteList);
         listView.setAdapter(mySimpleAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

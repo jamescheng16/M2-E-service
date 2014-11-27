@@ -100,7 +100,7 @@ public class BD extends SQLiteOpenHelper {
     }
 
 
-    private Plante curseurToPlante(Cursor curseur) {
+    public Plante curseurToPlante(Cursor curseur) {
 
         Plante plante = new Plante();
 
@@ -126,12 +126,12 @@ public class BD extends SQLiteOpenHelper {
         Date lastWateringTime=new Date();
 
         try {
-            createTime =  dateFormat.parse(last_Watering_Time);
+            lastWateringTime =  dateFormat.parse(last_Watering_Time);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        plante.setCreate_Time(lastWateringTime);
+        plante.setLast_Watering_Time(lastWateringTime);
         plante.setWatering_Frequency(curseur.getInt(5));
         plante.setRoom(curseur.getString(6));
 
