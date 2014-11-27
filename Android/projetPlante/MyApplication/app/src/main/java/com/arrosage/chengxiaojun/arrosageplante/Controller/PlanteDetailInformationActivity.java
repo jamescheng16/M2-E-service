@@ -97,6 +97,23 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
 
         plante.setUsuel_name(nom_usuel_et.getText().toString());
         plante.setLatin_name(nom_latin_et.getText().toString());
+        /**
+         * if frequency is not a numeric
+         */
+        if(!isNumeric(frequency_et.getText().toString())){
+            Toast.makeText(getApplicationContext(), "Votre frequencé n'est pas un nombre",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        /**
+         * if frequency is smaller then 1
+         */
+        if(Integer.parseInt(frequency_et.getText().toString()) < 1){
+            Toast.makeText(getApplicationContext(), "Votre frequencé est moins que 1",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         plante.setWatering_Frequency(Integer.parseInt(frequency_et.getText().toString()));
         plante.setRoom(room_et.getText().toString());
 
@@ -121,6 +138,15 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
                     Toast.LENGTH_SHORT).show();
 
         } else {
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(new Date());
+            //cal.setTime(new Date());
+
+            cal.add(Calendar.DATE, plante.getWatering_Frequency());
+            Date next_watering_day = cal.getTime();
+
+            plante.setNext_Watering_Time(next_watering_day);
 
             bd.miseAJour(plante);
             Toast.makeText(getApplicationContext(), "Vous avez mise à jour l'information sur "+nom_usuel_et.getText().toString(),
@@ -164,5 +190,14 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
     protected void onDestroy() {
         bd.fermeture();
         super.onDestroy();
+    }
+
+    public static boolean isNumeric(String str){
+        for (int i = str.length();--i>=0;){
+            if (!Character.isDigit(str.charAt(i))){
+                return false;
+            }
+        }
+        return true;
     }
 }

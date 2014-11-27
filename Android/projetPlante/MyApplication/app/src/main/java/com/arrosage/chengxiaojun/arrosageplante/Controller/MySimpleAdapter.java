@@ -2,7 +2,6 @@ package com.arrosage.chengxiaojun.arrosageplante.Controller;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
+/** This is the customer adapter for display the status of a plante in a image and the name of a plante
  * Created by CHENG Xiaojun on 26/11/14.
  */
 public class MySimpleAdapter extends BaseAdapter{
@@ -73,7 +72,7 @@ public class MySimpleAdapter extends BaseAdapter{
         //Log.i("activity","positon : "+ position + "  status: "+this_plante_status );
 
 
-        Log.i("activity","plante last watring time  : "+ date_to_string(this_plante.getLast_Watering_Time()));
+        //Log.i("activity","plante last watring time  : "+ date_to_string(this_plante.getLast_Watering_Time()));
 
 
         switch (this_plante_status){
@@ -107,6 +106,12 @@ public class MySimpleAdapter extends BaseAdapter{
         // TODO Auto-generated method stub
         return position;
     }
+
+    /**
+     * update the listview information
+     * @param cur
+     * @param plantes_list
+     */
     public void update_icon(Cursor cur, ArrayList<Plante> plantes_list){
         cursor = cur;
         plantes = plantes_list;
@@ -115,12 +120,8 @@ public class MySimpleAdapter extends BaseAdapter{
     public String date_to_string(Date date){
         SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 
-
-// Using DateFormat format method we can create a string
-// representation of a date with the defined format.
         String reportDate = df.format(date);
 
-// Print what date is today!
       return reportDate;
     }
 }

@@ -51,6 +51,12 @@ public class WateringOutil {
         return status;
     }
 
+    /**
+     * get the difference between two day
+     * @param beginDate
+     * @param endDate
+     * @return
+     */
     public long getTwoDateDifference(Date beginDate, Date endDate) {
         //Date d1 = df.parse("2004-03-26 13:31:40");
         //Date d2 = df.parse("2004-01-02 11:30:24");
