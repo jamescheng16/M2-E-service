@@ -47,6 +47,8 @@ public class MySimpleAdapter extends BaseAdapter{
     // getView method is called for each item of ListView
     public View getView(int position,  View view, ViewGroup parent)
     {
+
+
         // inflate the layout for each item of listView
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.cell, null);
@@ -63,12 +65,12 @@ public class MySimpleAdapter extends BaseAdapter{
         //TextView textViewSecondLine=(TextView)view.findViewById(R.id.secondLine);
         ImageView imageView = (ImageView)view.findViewById(R.id.icon);
 
-        textViewFirstLine.setText(latin_name);
+        textViewFirstLine.setText(usuel_name);
 
         int this_plante_status;
         Plante this_plante = plantes.get(position);
         this_plante_status = outil.getWateringStatus(this_plante);
-        Log.i("activity","positon : "+ position + "  status: "+this_plante_status );
+        //Log.i("activity","positon : "+ position + "  status: "+this_plante_status );
 
 
         Log.i("activity","plante last watring time  : "+ date_to_string(this_plante.getLast_Watering_Time()));
@@ -105,7 +107,11 @@ public class MySimpleAdapter extends BaseAdapter{
         // TODO Auto-generated method stub
         return position;
     }
-
+    public void update_icon(Cursor cur, ArrayList<Plante> plantes_list){
+        cursor = cur;
+        plantes = plantes_list;
+        this.notifyDataSetChanged();
+    }
     public String date_to_string(Date date){
         SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 

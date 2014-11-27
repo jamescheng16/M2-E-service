@@ -180,4 +180,23 @@ public class BD extends SQLiteOpenHelper {
         return curseur;
     }
 
+    public int watering_a_plante(Plante plante) {
+
+        ContentValues valeurs = new ContentValues();
+
+        // set the format to sql date time
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+
+        valeurs.put("latin_name", plante.getLatin_name());
+        valeurs.put("usuel_name", plante.getUsuel_name());
+        valeurs.put("create_Time", dateFormat.format(plante.getCreate_Time()));
+        valeurs.put("last_Watering_Time", dateFormat.format(new Date()));
+        valeurs.put("watering_Frequency", plante.getWatering_Frequency());
+        valeurs.put("room", plante.getRoom());
+
+        return bd.update("plantes", valeurs, "id = " + plante.getId(), null);
+    }
+
+
 }

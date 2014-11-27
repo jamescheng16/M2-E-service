@@ -19,7 +19,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="add"
+        android:text="ajouter"
         android:id="@+id/saveButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"

@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.arrosage.chengxiaojun.arrosageplante.Model.BD;
 import com.arrosage.chengxiaojun.arrosageplante.Model.Plante;
@@ -29,8 +31,6 @@ public class MyActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
-        //ImageView image = (ImageView)findViewById(R.id.imageView);
-        //image.setImageResource(R.drawable.yes);
 
         listView = (ListView)findViewById(R.id.listView);
         bd = new BD(this);
@@ -56,6 +56,36 @@ public class MyActivity extends ActionBarActivity {
 
         });
 
+
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> arg0, View v,
+                                           int index, long arg3) {
+
+                // TODO Auto-generated method stub
+                //Log.d("in onLongClick");
+
+                Log.i("mainactivity","***************************************************");
+                watring_a_plante(planteList.get(index));
+
+                Toast.makeText(getApplicationContext(), "Vous avez arrosagé  " + planteList.get(index).getUsuel_name(),
+                        Toast.LENGTH_SHORT).show();
+                //Log.d("long click : " +str);
+                cursor = bd.getCursor();
+                planteList = bd.getPlantes();
+
+                mySimpleAdapter.update_icon(cursor,planteList);
+                listView.setAdapter(mySimpleAdapter);
+
+                return true;
+            }
+        });
+
+    }
+
+    public void watring_a_plante(Plante plante){
+        bd.watering_a_plante(plante);
     }
 
     public void start_plante_detail_information_Activity(Plante plante){
