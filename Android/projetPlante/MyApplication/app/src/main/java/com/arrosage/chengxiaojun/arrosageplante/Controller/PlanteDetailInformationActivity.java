@@ -27,6 +27,10 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
      */
     private BD bd;
 
+    /**
+     * whether is create a new plante or update the information of the plante
+     */
+    private boolean is_create_mode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +58,13 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
                 frequency_et.setText(Integer.toString(plante.getWatering_Frequency()));
                 room_et.setText(plante.getRoom());
             }
+            is_create_mode = false;
         }
+        else{
+            is_create_mode = true;
+        }
+
+
     }
 
     /**
@@ -69,7 +79,12 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
             plante.setLatin_name(nom_latin_et.getText().toString());
             plante.setWatering_Frequency(Integer.parseInt(frequency_et.getText().toString()));
             plante.setRoom(room_et.getText().toString());
-            bd.ajouter(plante);
+            if(is_create_mode) {
+                bd.ajouter(plante);
+            }
+            else{
+                bd.miseAJour(plante);
+            }
         /**
          * end this activity
          */
