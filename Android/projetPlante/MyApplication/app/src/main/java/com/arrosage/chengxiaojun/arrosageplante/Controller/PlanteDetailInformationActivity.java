@@ -14,6 +14,7 @@ import com.arrosage.chengxiaojun.arrosageplante.Model.BD;
 import com.arrosage.chengxiaojun.arrosageplante.Model.Plante;
 import com.arrosage.chengxiaojun.arrosageplante.R;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class PlanteDetailInformationActivity extends ActionBarActivity {
@@ -93,17 +94,34 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
     public void save(View view) {
 
         plante.setCreate_Time(new Date());
-        plante.setLast_Watering_Time(new Date());
+
         plante.setUsuel_name(nom_usuel_et.getText().toString());
         plante.setLatin_name(nom_latin_et.getText().toString());
         plante.setWatering_Frequency(Integer.parseInt(frequency_et.getText().toString()));
         plante.setRoom(room_et.getText().toString());
+
+
+
+
         if (is_create_mode) {
+
+            plante.setLast_Watering_Time(new Date());
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(new Date());
+            //cal.setTime(new Date());
+
+            cal.add(Calendar.DATE, plante.getWatering_Frequency());
+            Date next_watering_day = cal.getTime();
+
+            plante.setNext_Watering_Time(next_watering_day);
+            plante.setIs_watringed(1);
             bd.ajouter(plante);
             Toast.makeText(getApplicationContext(), "Vous avez creé une plante",
                     Toast.LENGTH_SHORT).show();
 
         } else {
+
             bd.miseAJour(plante);
             Toast.makeText(getApplicationContext(), "Vous avez mise à jour l'information sur "+nom_usuel_et.getText().toString(),
                     Toast.LENGTH_SHORT).show();

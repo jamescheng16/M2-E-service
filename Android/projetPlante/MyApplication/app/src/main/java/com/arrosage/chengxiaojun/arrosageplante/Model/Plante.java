@@ -15,8 +15,15 @@ public class Plante {
     private String usuel_name;
     private Date create_Time;
     private Date last_Watering_Time;
+    private Date next_Watering_Time;
+    /*
 
-
+        whether is wateringed
+     */
+    private int is_watringed;
+    /**
+     * this plante is in which room
+     */
     private String room;
 
     /**
@@ -82,6 +89,22 @@ public class Plante {
         this.watering_Frequency = watering_Frequency;
     }
 
+    public int getIs_watringed() {
+        return is_watringed;
+    }
+
+    public void setIs_watringed(int is_watringed) {
+        this.is_watringed = is_watringed;
+    }
+
+    public Date getNext_Watering_Time() {
+        return next_Watering_Time;
+    }
+
+    public void setNext_Watering_Time(Date next_Watering_Time) {
+        this.next_Watering_Time = next_Watering_Time;
+    }
+
     @Override
     public String toString() {
         return "Plante{" +
@@ -90,6 +113,8 @@ public class Plante {
                 ", usuel_name='" + usuel_name + '\'' +
                 ", create_Time=" + create_Time +
                 ", last_Watering_Time=" + last_Watering_Time +
+                ", next_Watering_Time=" + next_Watering_Time +
+                ", is_watringed=" + is_watringed +
                 ", room='" + room + '\'' +
                 ", watering_Frequency=" + watering_Frequency +
                 '}';

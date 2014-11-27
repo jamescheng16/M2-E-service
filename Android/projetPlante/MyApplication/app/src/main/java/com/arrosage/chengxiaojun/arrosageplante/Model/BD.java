@@ -9,9 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
-/**
+/** BD Helper
  * Created by CHENG Xiaojun on 26/11/14.
  */
 public class BD extends SQLiteOpenHelper {
@@ -37,6 +38,8 @@ public class BD extends SQLiteOpenHelper {
      private Date last_Watering_Time;
      priavte int watering_Frequency;
      private String room;
+     private int is_watered;
+     private Date next_Watering_Time;
      * @param db
      */
     // create the table of plantes
@@ -49,7 +52,9 @@ public class BD extends SQLiteOpenHelper {
                 + "create_Time DATE NOT NULL,"
                 + "last_Watering_Time DATE NOT NULL,"
                 +"watering_Frequency INTEGER NOT NULL,"
-                + "room TEXT NOT NULL);");
+                +"room TEXT NOT NULL,"
+                +"isWatered INTEGER NOT NULL,"
+                + "next_Watering_Time DATE NOT NULL);");
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int ancienneVersion,
@@ -76,11 +81,19 @@ public class BD extends SQLiteOpenHelper {
         valeurs.put("last_Watering_Time", dateFormat.format(plante.getLast_Watering_Time()));
         valeurs.put("watering_Frequency", plante.getWatering_Frequency());
         valeurs.put("room", plante.getRoom());
+        valeurs.put("isWatered",plante.getIs_watringed());
+        valeurs.put("next_Watering_Time",dateFormat.format(plante.getNext_Watering_Time()));
 
 
         //insertion of valeur into the table
         return bd.insert("plantes", null, valeurs);
     }
+
+    /**
+     * Mise a jour information of a plante
+     * @param plante
+     * @return
+     */
     public int miseAJour(Plante plante) {
 
         ContentValues valeurs = new ContentValues();
@@ -95,11 +108,17 @@ public class BD extends SQLiteOpenHelper {
         valeurs.put("last_Watering_Time", dateFormat.format(plante.getLast_Watering_Time()));
         valeurs.put("watering_Frequency", plante.getWatering_Frequency());
         valeurs.put("room", plante.getRoom());
+        valeurs.put("isWatered",plante.getIs_watringed());
+        valeurs.put("next_Watering_Time",dateFormat.format(plante.getNext_Watering_Time()));
 
         return bd.update("plantes", valeurs, "id = " + plante.getId(), null);
     }
 
-
+    /**
+     * paser curseur to plante
+     * @param curseur
+     * @return
+     */
     public Plante curseurToPlante(Cursor curseur) {
 
         Plante plante = new Plante();
@@ -134,11 +153,25 @@ public class BD extends SQLiteOpenHelper {
         plante.setLast_Watering_Time(lastWateringTime);
         plante.setWatering_Frequency(curseur.getInt(5));
         plante.setRoom(curseur.getString(6));
+        plante.setIs_watringed(curseur.getInt(7));
 
+        String nextWateringTime = curseur.getString(8);
+        Date next_WateringTime = new Date();
+        try{
+            next_WateringTime = dateFormat.parse(nextWateringTime);
+        }catch (ParseException e){
 
+        }
+
+        plante.setNext_Watering_Time(next_WateringTime);
         return plante;
     }
 
+    /**
+     * supprime a plante
+     * @param id plant id
+     * @return
+     */
     public int supprimer(int id) {
         return bd.delete("plantes", "id = " + id, null);
     }
@@ -155,7 +188,10 @@ public class BD extends SQLiteOpenHelper {
         return curseurToPlante(curseur);
     }
 
-
+    /**
+     * get plante liste
+     * @return
+     */
     public ArrayList<Plante> getPlantes(){
         ArrayList<Plante> liste_plantes = new ArrayList<Plante>();
 
@@ -175,11 +211,20 @@ public class BD extends SQLiteOpenHelper {
         return liste_plantes;
     }
 
+    /**
+     * get BD cursor
+     * @return
+     */
     public Cursor getCursor(){
         Cursor curseur = bd.query("plantes", null, null, null, null, null, "id",null);
         return curseur;
     }
 
+    /**
+     * watering a plante, change the information of a plante
+     * @param plante to plante needs to be wateringed
+     * @return
+     */
     public int watering_a_plante(Plante plante) {
 
         ContentValues valeurs = new ContentValues();
@@ -194,7 +239,16 @@ public class BD extends SQLiteOpenHelper {
         valeurs.put("last_Watering_Time", dateFormat.format(new Date()));
         valeurs.put("watering_Frequency", plante.getWatering_Frequency());
         valeurs.put("room", plante.getRoom());
+        valeurs.put("isWatered",1);
 
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        //cal.setTime(new Date());
+
+        cal.add(Calendar.DATE, plante.getWatering_Frequency());
+        Date next_watering_day = cal.getTime();
+        valeurs.put("next_Watering_Time", dateFormat.format(next_watering_day));
         return bd.update("plantes", valeurs, "id = " + plante.getId(), null);
     }
 

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +17,9 @@ import com.arrosage.chengxiaojun.arrosageplante.R;
 
 import java.util.ArrayList;
 
-
+/**
+ * main activity
+ */
 public class MyActivity extends ActionBarActivity {
 
     private BD bd;
@@ -52,30 +53,35 @@ public class MyActivity extends ActionBarActivity {
                                     int position, long id) {
                 Plante plante = planteList.get(position);
                 start_plante_detail_information_Activity(plante);
+
             }
 
         });
 
 
-
+        /**
+         * long click listener
+         */
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             public boolean onItemLongClick(AdapterView<?> arg0, View v,
                                            int index, long arg3) {
 
-                // TODO Auto-generated method stub
-                //Log.d("in onLongClick");
-
-                Log.i("mainactivity","***************************************************");
                 watring_a_plante(planteList.get(index));
 
                 Toast.makeText(getApplicationContext(), "Vous avez arrosagé  " + planteList.get(index).getUsuel_name(),
                         Toast.LENGTH_SHORT).show();
-                //Log.d("long click : " +str);
+
                 cursor = bd.getCursor();
                 planteList = bd.getPlantes();
-
+                /**
+                 * call update screen information methode
+                 */
                 mySimpleAdapter.update_icon(cursor,planteList);
+
+                /**
+                 * overwrite old adapter
+                 */
                 listView.setAdapter(mySimpleAdapter);
 
                 return true;
