@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arrosage.chengxiaojun.arrosageplante.Model.BD;
 import com.arrosage.chengxiaojun.arrosageplante.Model.Plante;
@@ -21,7 +23,8 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
     /**
      * all the editText variable
      */
-    private EditText nom_usuel_et, nom_latin_et, frequency_et,room_et;
+    private EditText nom_usuel_et, nom_latin_et, frequency_et, room_et;
+    private TextView status_tv;
     /**
      * BD entity
      */
@@ -38,59 +41,69 @@ public class PlanteDetailInformationActivity extends ActionBarActivity {
         setContentView(R.layout.plantedetailinformtaion);
 
         plante = new Plante();
-        nom_usuel_et = (EditText)findViewById(R.id.nom_usuelEditText);
-        nom_latin_et = (EditText)findViewById(R.id.nom_latinEditText);
+        nom_usuel_et = (EditText) findViewById(R.id.nom_usuelEditText);
+        nom_latin_et = (EditText) findViewById(R.id.nom_latinEditText);
         frequency_et = (EditText) findViewById(R.id.frequencyEditText);
         room_et = (EditText) findViewById(R.id.roomeditText);
+        status_tv = (TextView) findViewById(R.id.statusTextView);
         bd = new BD(this);
 
     }
-    protected void onStart(){
+
+    protected void onStart() {
         super.onStart();
         Bundle donnees = getIntent().getExtras();
 
         //if we get an id value from previous activity, we would display the information, otherwise we display the create plante page
-        if(donnees != null){
+        if (donnees != null) {
             plante = bd.getPlante(donnees.getInt("id"));
-            if(plante != null){
+            if (plante != null) {
                 nom_usuel_et.setText(plante.getUsuel_name());
                 nom_latin_et.setText(plante.getLatin_name());
                 frequency_et.setText(Integer.toString(plante.getWatering_Frequency()));
                 room_et.setText(plante.getRoom());
             }
             is_create_mode = false;
-        }
-        else{
+            status_tv.setText("Mise à jours information");
+        } else {
             is_create_mode = true;
+            status_tv.setText("Création de une plante");
+
         }
 
 
     }
 
     /**
-     * Save action, when we click on SAVE button
+     * create or update action action, when we click on SAVE button
+     *
      * @param view
      */
     public void save(View view) {
 
-            plante.setCreate_Time(new Date());
-            plante.setLast_Watering_Time(new Date());
-            plante.setUsuel_name(nom_usuel_et.getText().toString());
-            plante.setLatin_name(nom_latin_et.getText().toString());
-            plante.setWatering_Frequency(Integer.parseInt(frequency_et.getText().toString()));
-            plante.setRoom(room_et.getText().toString());
-            if(is_create_mode) {
-                bd.ajouter(plante);
-            }
-            else{
-                bd.miseAJour(plante);
-            }
+        plante.setCreate_Time(new Date());
+        plante.setLast_Watering_Time(new Date());
+        plante.setUsuel_name(nom_usuel_et.getText().toString());
+        plante.setLatin_name(nom_latin_et.getText().toString());
+        plante.setWatering_Frequency(Integer.parseInt(frequency_et.getText().toString()));
+        plante.setRoom(room_et.getText().toString());
+        if (is_create_mode) {
+            bd.ajouter(plante);
+            Toast.makeText(getApplicationContext(), "Vous avez creé une plante",
+                    Toast.LENGTH_SHORT).show();
+
+        } else {
+            bd.miseAJour(plante);
+            Toast.makeText(getApplicationContext(), "Vous avez mise à jour l'information sur "+nom_usuel_et.getText().toString(),
+                    Toast.LENGTH_SHORT).show();
+        }
         /**
          * end this activity
          */
-            finish();
+        finish();
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
