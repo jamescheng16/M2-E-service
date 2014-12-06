@@ -1,10 +1,12 @@
 package com.frostmourne.camp;
 
 import com.frostmourne.camp.domain.CampSys.*;
+import com.frostmourne.camp.domain.activity.Activity;
 import com.frostmourne.camp.service.Syscamp.CampsiteRepository;
 import com.frostmourne.camp.service.Syscamp.HelpRequestRepository;
 import com.frostmourne.camp.service.Syscamp.InformationRepository;
 import com.frostmourne.camp.service.Syscamp.UserRepository;
+import com.frostmourne.camp.service.repository.Activity.ActivityRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -24,6 +26,11 @@ public class Application {
         CampsiteRepository campsiteRepository = context.getBean(CampsiteRepository.class);
         InformationRepository informationRepository = context.getBean(InformationRepository.class);
         HelpRequestRepository helpRequestRepository = context.getBean(HelpRequestRepository.class);
+
+
+        ActivityRepository activityRepository = context.getBean(ActivityRepository.class);
+
+
 
         // test data
         User testUser = new User();
@@ -84,6 +91,16 @@ public class Application {
         helpRequestRepository.save(testHelp1);
         helpRequestRepository.save(testHelp2);
 
+        //activities test data
+
+        Activity test1 = new Activity();
+        test1.setDate(new Date());
+        test1.setActivity_time("下午5点");
+        test1.setAuthor("james");
+        test1.setDescription("每人用现场的原料 调制出一杯是你个性的饮料 然后 根据自己手上的资料找到binome 然后请他喝 然后让他猜你的性格是什么");
+        test1.setName("性格饮料");
+
+        activityRepository.save(test1);
 
     }
 }

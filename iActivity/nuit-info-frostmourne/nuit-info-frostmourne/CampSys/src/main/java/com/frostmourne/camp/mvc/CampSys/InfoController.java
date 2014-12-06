@@ -92,6 +92,19 @@ public class InfoController {
     }
 
 
+    /**
+     * Listing all messages for planting the vaccine
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/memberinfo")
+    public String memberinfo(Model model) {
+
+        return "view/memberinfo";
+    }
+
+
 
 
     /**

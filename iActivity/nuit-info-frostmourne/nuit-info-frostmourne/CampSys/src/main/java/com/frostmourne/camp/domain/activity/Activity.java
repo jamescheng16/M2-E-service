@@ -24,6 +24,9 @@ public class Activity {
 
     private String activity_time;
 
+    private String author;
+
+
     public Activity() {
     }
 
@@ -62,5 +65,14 @@ public class Activity {
 
     public void setActivity_time(String activity_time) {
         this.activity_time = activity_time;
+    }
+
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

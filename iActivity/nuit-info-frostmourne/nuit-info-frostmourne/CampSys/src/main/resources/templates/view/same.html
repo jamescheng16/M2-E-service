@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layout">
 
@@ -12,7 +11,7 @@
 <div layout:fragment="main">
     <!-- Main -->
     <section id="main" class="container">
-
+        <h2>同类</h2>
 
         <div class="row">
             <div class="12u">
@@ -20,36 +19,42 @@
 
                 <!-- Table -->
                 <section class="box">
-                    <h2>创建活动</h2>
+                    <h3>在这里悄悄告诉我们你的兴趣.让我们帮你在活动中找到你的同类</h3>
 
-                    <form action="#" th:action="@{/activitypost}" method="post">
+                    <form action="#" method="post">
                         <div class="row uniform 50%">
                             <div class="6u 12u(3)">
-                                <input id="name" type="text" placeholder="活动名称" value="" name="活动名称" th:field="*{activity.name}"/>
+                                <input id="name" type="text" placeholder="你的名字" value="" name="name"/>
                             </div>
 
                         </div>
-
 
                         <div class="row uniform 50%">
                             <div class="6u 12u(3)">
-                                <input id="time" type="text" placeholder="时间" value="时间" th:field="*{activity.activity_time}"/>
+                                <input id="email" type="email" placeholder="Email" value="" name="email"/>
                             </div>
                         </div>
 
-
-                          <div class="row uniform 50%">
-                                <div class="6u 12u(3)">
-                                    <input id="author" type="text" placeholder="发起人" value="发起人" th:field="*{activity.author}"/>
+                        <div class="row uniform 50%">
+                            <div class="6u 12u(3)">
+                                <input id="interest1" type="text" placeholder="兴趣1" value="兴趣1"/>
+                            </div>
+                            <div class="6u 12u(3)">
+                                <input id="interest2" type="text" placeholder="兴趣2" value="兴趣2"/>
                             </div>
                         </div>
 
+                        <div class="row uniform 50%">
+                            <div class="6u 12u(3)">
+                                <input id="interest3" type="text" placeholder="兴趣3" value="兴趣3"/>
+                            </div>
+                        </div>
 
 
                         <div class="row uniform 50%">
                             <div class="12u">
-                                <textarea id="message" rows="6" placeholder="在这里写出你的活动创意"
-                                          name="message" th:field="*{activity.description}"></textarea>
+                                <textarea id="message" rows="6" placeholder="悄悄话"
+                                          name="message"></textarea>
                             </div>
                         </div>
 
@@ -57,7 +62,7 @@
                             <div class="12u">
                                 <ul class="actions">
                                     <li>
-                                        <input type="submit" name="save" value="创建活动"/>
+                                        <input type="submit" value="告诉我们"/>
                                     </li>
                                 </ul>
                             </div>
