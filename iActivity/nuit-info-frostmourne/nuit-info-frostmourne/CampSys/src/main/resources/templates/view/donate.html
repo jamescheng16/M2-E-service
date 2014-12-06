@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<div layout:fragment="main">
+    <!-- Main -->
+    <section id="main" class="container">
+        <h2>Donate</h2>
+
+        <div class="row">
+            <div class="12u">
+
+
+                <!-- Table -->
+                <section class="box">
+                    <h3>Donate for a campsite or a person</h3>
+
+                    <form action="#" method="post">
+                        <div class="row uniform 50%">
+                            <div class="6u 12u(3)">
+                                <input id="name" type="text" placeholder="Name" value="" name="name"/>
+                            </div>
+                            <div class="6u 12u(3)">
+                                <input id="email" type="email" placeholder="Email" value="" name="email"/>
+                            </div>
+                        </div>
+
+                        <div class="row uniform 50%">
+                            <div class="4u 12u(2)">
+                                <input id="individual" type="radio" checked="" name="typeDonors"/>
+                                <label for="individual">Individual</label>
+                            </div>
+                            <div class="4u 12u(2)">
+                                <input id="organization" type="radio" name="typeDonors"/>
+                                <label for="organization">Organization</label>
+                            </div>
+                        </div>
+
+                        <div class="row uniform 50%">
+                            <div class="6u 12u(3)">
+                                <input id="to" type="text" placeholder="to" value="to"/>
+                            </div>
+                        </div>
+                        <div class="row uniform 50%">
+                            <div class="6u 12u(2)">
+                                <input id="amount" type="text" placeholder="amount" value="" name="amout"/>
+                            </div>
+                            <div class="6u 12u(3)">
+                                <h3> $</h3>
+                            </div>
+                        </div>
+
+                        <div class="row uniform 50%">
+                            <div class="12u">
+                                <textarea id="message" rows="6" placeholder="Enter your message"
+                                          name="message"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row uniform">
+                            <div class="12u">
+                                <ul class="actions">
+                                    <li>
+                                        <input type="submit" value="Donate"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </section>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<div layout:fragment="script">
+    <script>
+        $("#header").attr("class", "skel-layers-fixed");
+    </script>
+</div>
+</body>
+</html>

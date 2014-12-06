@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body class="landing">
+
+<div layout:fragment="banner">
+    <!-- Banner -->
+    <section id="banner">
+        <h2>Camp</h2>
+
+        <p>This is where you will find your all you need in the camps</p>
+        <ul class="actions">
+            <li><a href="#" class="button special">Sign Up</a></li>
+
+
+            <li><a class="button" onclick="aud_play_pause()">Read it for me</a></li>
+        </ul>
+    </section>
+</div>
+
+<div layout:fragment="main">
+    <section id="main" class="container">
+
+        <section class="box special">
+            <header class="major">
+
+                <h3 hidden="true" id="audioURLID" th:text="${audioUrl}"></h3>
+
+                <h2>Be like home at camps
+                    <br/>
+                    and finding all services here</h2>
+
+                <p>Finding your lost family?<br/> Searching your own psychotherapist?<br/>
+                    Receiving all helps from all around the world?<br/>
+                    Camp give you chances and hopes</p>
+            </header>
+            <!--<span class="image featured"><img src="images/pic01.jpg" alt=""/></span>-->
+        </section>
+
+        <section class="box special features">
+            <div class="features-row">
+                <section>
+                    <span class="icon major fa-bolt accent2"></span>
+
+                    <h3>Find your lost family?</h3>
+
+                    <p>Giving us your family's basic information, like a picture, a video or even if a name. Camp will
+                        help
+                        you to find your family back!</p>
+                </section>
+                <section>
+                    <span class="icon major fa-area-chart accent3"></span>
+
+                    <h3>Find all in a camp</h3>
+
+                    <p>Finding all services in a camp, including find your own psychotherapist, gathering all
+                        preventions
+                        in the first time.</p>
+                </section>
+            </div>
+            <div class="features-row">
+                <section>
+                    <span class="icon major fa-cloud accent4"></span>
+
+                    <h3>Posting your demand and find your help in the first time</h3>
+
+                    <p>Leaving your messages here and receiving helps from all around the world, let's hand in hand
+                        to make a better world</p>
+                </section>
+                <section>
+                    <span class="icon major fa-lock accent5"></span>
+
+                    <h3>Receiving all services and warms from everywhere</h3>
+
+                    <p>Here you will find all authorized organizations from all around the world, they are the person
+                        you
+                        might ever needed.</p>
+                </section>
+            </div>
+        </section>
+    </section>
+</div>
+
+
+<div layout:fragment="cta">
+    <!-- CTA -->
+    <section id="cta">
+
+        <h2>Contact us to make it better</h2>
+
+        <p>Camp expecting to make a better world</p>
+
+        <form action="mailto:youraddr@domain.tld" method="GET">
+            <div class="row uniform 50%">
+                <div class="8u 12u(3)">
+                    <input type="email" name="email" id="email" placeholder="Email Address"/>
+                </div>
+                <div class="4u 12u(3)">
+                    <a href="mailto:benli0822@gmail.com?Subject=[Camp]ReportIssues" class="button" target="_top">
+                        Send</a>
+                </div>
+            </div>
+        </form>
+
+    </section>
+</div>
+<div layout:fragment="script">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var audioElement = document.createElement('audio');
+            audioElement.setAttribute('id', 'myAudio');
+
+            var sourceElement = document.createElement('source');
+            //var url = document.getElementById("audioURLID").innerHTML;
+            var url = $(audioURLID).text();
+            //sourceElement.setAttribute('src', url);
+            console.log(url);
+            sourceElement.setAttribute('src', url);
+            sourceElement.setAttribute('type', 'audio/mpeg');
+
+            audioElement.appendChild(sourceElement);
+
+            document.getElementById("banner").appendChild(audioElement);
+
+
+        });
+
+        console.log("asdas");
+
+        function aud_play_pause() {
+            var myAudio = document.getElementById("myAudio");
+            if (myAudio.paused) {
+                myAudio.play();
+            } else {
+                myAudio.pause();
+            }
+        }
+    </script>
+</div>
+<div layout:fragment="audio">
+    <!---audio id="myAudio"-->
+    <!--source src=th:text="${audioUrl} type="audio/mpeg"-->
+    <!--/audio-->
+
+</div>
+</body>
+</html>

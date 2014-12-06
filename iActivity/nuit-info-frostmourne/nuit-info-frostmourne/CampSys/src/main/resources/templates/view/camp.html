@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+
+<div layout:fragment="main">
+    <!-- Main -->
+    <section id="main" class="container">
+        <h2>Find your own camps</h2>
+
+        <div class="row">
+            <div class="12u">
+                <section class="box">
+
+
+                    <p>You will find all camps here</p>
+
+                    <form>
+                        <div class="row uniform 50%">
+                            <div class="8u 12u(3)">
+                                <input type="text" name="search" id="search" placeholder="Search the camp"/>
+                            </div>
+                            <div class="4u 12u(3)">
+                                <input type="submit" value="Search" class="fit"/>
+                            </div>
+                        </div>
+                    </form>
+                    <span class="image fit"><img th:src="@{/images/map.png}" height="400"/></span>
+                </section>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div layout:fragment="script">
+    <script>
+        $("#header").attr("class", "skel-layers-fixed");
+    </script>
+</div>
+
+
+<div layout:fragment="script">
+    <script>
+        $("#header").attr("class", "skel-layers-fixed");
+    </script>
+</div>
+</body>
+</html>

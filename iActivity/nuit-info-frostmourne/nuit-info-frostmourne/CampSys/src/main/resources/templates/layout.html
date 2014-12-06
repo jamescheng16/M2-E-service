@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Camp</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <!--[if lte IE 8]>
+    <script th:src="@{/css/ie/html5shiv.js}"></script><![endif]-->
+    <script th:src="@{/css/ie/html5shiv.js}"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/jquery.dropotron.min.js}"></script>
+    <script th:src="@{/js/jquery.scrollgress.min.js}"></script>
+    <script th:src="@{/js/skel.min.js}"></script>
+    <script th:src="@{/js/skel-layers.min.js}"></script>
+    <script th:src="@{/js/init.js}"></script>
+    <noscript>
+        <link rel="stylesheet" th:href="@{/css/skel.css}"/>
+        <link rel="stylesheet" th:href="@{/css/style.css}"/>
+        <link rel="stylesheet" th:href="@{/css/style-wide.css}"/>
+    </noscript>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" th:href="@{/css/ie/v8.css}"/><![endif]-->
+
+    <div layout:fragment="imports"></div>
+</head>
+<body>
+<div layout:replace="common/header :: header"></div>
+<div layout:fragment="banner"></div>
+<div layout:fragment="main"></div>
+<div layout:fragment="cta"></div>
+<div layout:replace="common/footer :: footer"></div>
+
+<div layout:fragment="script"></div>
+
+</body>
+</html>

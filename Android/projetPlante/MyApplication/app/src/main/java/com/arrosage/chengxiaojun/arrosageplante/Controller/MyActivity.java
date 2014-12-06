@@ -46,6 +46,9 @@ public class MyActivity extends ActionBarActivity {
         planteList = bd.getPlantes();
         mySimpleAdapter = new MySimpleAdapter(this,cursor,planteList);
         listView.setAdapter(mySimpleAdapter);
+        /**
+         * short click action to displat the detail information of a plante
+         */
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -60,7 +63,7 @@ public class MyActivity extends ActionBarActivity {
 
 
         /**
-         * long click listener
+         * long click listener to change the status of plante
          */
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
@@ -90,6 +93,10 @@ public class MyActivity extends ActionBarActivity {
 
     }
 
+    /**
+     * watring a plante
+     * @param plante the plante needs to be watered
+     */
     public void watring_a_plante(Plante plante){
         bd.watering_a_plante(plante);
     }

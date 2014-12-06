@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<div layout:fragment="main">
+    <!-- Main -->
+    <section id="main" class="container">
+        <h2>Post information</h2>
+
+        <div class="row">
+            <div class="12u">
+
+
+                <!-- Table -->
+                <section class="box">
+                    <h3>Post your demand</h3>
+
+                    <form action="#" th:action="@{/sospost}" method="post">
+                        <div class="row uniform 50%">
+                            <div class="6u 12u(3)">
+                                <label>Name</label>
+
+                                <div th:each="user, stat : ${users}">
+                                    <label name="senderMsg" id="senderMsg"
+                                           th:text="*{users[__${stat.index}__].username}"
+                                           th:if="${session.test.equals(users[__${stat.index}__])}"/>
+                                </div>
+                            </div>
+                            <div class="6u 12u(3)">
+                                <label>Site Camp</label>
+
+                                <div th:each="user, stat : ${users}">
+                                    <label name="senderMsg" id="senderMsg"
+                                           th:text="*{users[__${stat.index}__].address.address}"
+                                           th:if="${session.test.equals(users[__${stat.index}__])}"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row uniform 50%">
+                            <div class="12u">
+                                <div class="select-wrapper">
+                                    <label>Type</label>
+                                    <select name="category" id="category" th:field="*{helpRequest.type}">
+                                        <option th:each="type : ${allType}"
+                                                th:value="${type}"
+                                                th:text="${type}">Wireframe
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row uniform 50%">
+                            <div class="12u">
+                                <textarea id="message" rows="6" placeholder="Enter your message"
+                                          name="message" th:field="*{helpRequest.description}"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row uniform">
+                            <div class="12u">
+                                <ul class="actions">
+                                    <li>
+                                        <input type="submit" name="save" value="Send message"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </section>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<div layout:fragment="script">
+    <script>
+        $("#header").attr("class", "skel-layers-fixed");
+    </script>
+</div>
+</body>
+</html>
