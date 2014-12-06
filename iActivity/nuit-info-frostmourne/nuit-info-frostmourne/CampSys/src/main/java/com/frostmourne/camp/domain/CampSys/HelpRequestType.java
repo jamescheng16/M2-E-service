@@ -1,4 +1,4 @@
-package com.frostmourne.camp.domain;
+package com.frostmourne.camp.domain.CampSys;
 
 /**
  * A help request could be mental or physical

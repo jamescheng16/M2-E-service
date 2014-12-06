@@ -1,4 +1,4 @@
-package com.frostmourne.camp.domain;
+package com.frostmourne.camp.domain.CampSys;
 
 import org.hibernate.annotations.NaturalId;
 

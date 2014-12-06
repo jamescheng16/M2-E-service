@@ -1,6 +1,6 @@
 package com.frostmourne.camp.service;
 
-import com.frostmourne.camp.domain.User;
+import com.frostmourne.camp.domain.CampSys.User;
 
 /**
  * Created by jamesRMBP on 05/12/14.

@@ -1,9 +1,9 @@
 package com.frostmourne.camp.rest;
 
 import com.frostmourne.camp.Application;
-import com.frostmourne.camp.domain.Information;
-import com.frostmourne.camp.domain.InformationType;
-import com.frostmourne.camp.service.repository.InformationRepository;
+import com.frostmourne.camp.domain.CampSys.Information;
+import com.frostmourne.camp.domain.CampSys.InformationType;
+import com.frostmourne.camp.service.Syscamp.InformationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;

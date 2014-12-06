@@ -1,11 +1,11 @@
-package com.frostmourne.camp.mvc;
+package com.frostmourne.camp.mvc.CampSys;
 
 import com.frostmourne.camp.Application;
-import com.frostmourne.camp.domain.Information;
-import com.frostmourne.camp.domain.InformationType;
-import com.frostmourne.camp.domain.User;
-import com.frostmourne.camp.service.repository.InformationRepository;
-import com.frostmourne.camp.service.repository.UserRepository;
+import com.frostmourne.camp.domain.CampSys.Information;
+import com.frostmourne.camp.domain.CampSys.InformationType;
+import com.frostmourne.camp.domain.CampSys.User;
+import com.frostmourne.camp.service.Syscamp.InformationRepository;
+import com.frostmourne.camp.service.Syscamp.UserRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
@@ -65,6 +65,34 @@ public class InfoController {
         model.addAttribute("title", "Vaccines");
         return "view/info";
     }
+
+
+    /**
+     * Listing all messages for planting the vaccine
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/trafficinfo")
+    public String trafficinfo(Model model) {
+
+        return "view/trafficinfo";
+    }
+
+    /**
+     * Listing all messages for planting the vaccine
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/timeinfo")
+    public String timeinfo(Model model) {
+
+        return "view/timeinfo";
+    }
+
+
+
 
     /**
      * Listing all messages for security

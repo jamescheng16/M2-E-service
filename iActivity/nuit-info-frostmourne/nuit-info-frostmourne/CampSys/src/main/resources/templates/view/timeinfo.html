@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+
+<div layout:fragment="main">
+    <!-- Main -->
+    <section id="main" class="container">
+        <h2>Find your own camps</h2>
+
+        <div class="row">
+            <div class="12u">
+                <section class="box">
+                    <h3>聚会时间</h3>
+                    <p>本次聚会讲在12月26日1点48分开始</p>
+
+                </section>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div layout:fragment="script">
+    <script>
+        $("#header").attr("class", "skel-layers-fixed");
+    </script>
+</div>
+
+
+<div layout:fragment="script">
+    <script>
+        $("#header").attr("class", "skel-layers-fixed");
+    </script>
+</div>
+</body>
+</html>

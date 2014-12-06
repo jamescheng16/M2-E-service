@@ -1,6 +1,6 @@
-package com.frostmourne.camp.service.repository;
+package com.frostmourne.camp.service.Syscamp;
 
-import com.frostmourne.camp.domain.Campsite;
+import com.frostmourne.camp.domain.CampSys.Campsite;
 import org.springframework.data.repository.CrudRepository;
 
 /**

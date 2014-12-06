@@ -1,4 +1,4 @@
-package com.frostmourne.camp.domain;
+package com.frostmourne.camp.domain.CampSys;
 
 /**
  * Here will be all types of an information

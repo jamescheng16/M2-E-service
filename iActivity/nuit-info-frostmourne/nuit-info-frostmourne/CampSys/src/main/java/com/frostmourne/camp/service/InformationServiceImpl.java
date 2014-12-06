@@ -1,8 +1,8 @@
 package com.frostmourne.camp.service;
 
-import com.frostmourne.camp.domain.User;
-import com.frostmourne.camp.service.repository.InformationRepository;
-import com.frostmourne.camp.service.repository.UserRepository;
+import com.frostmourne.camp.domain.CampSys.User;
+import com.frostmourne.camp.service.Syscamp.InformationRepository;
+import com.frostmourne.camp.service.Syscamp.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

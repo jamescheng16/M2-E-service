@@ -1,6 +1,6 @@
-package com.frostmourne.camp.service.repository;
+package com.frostmourne.camp.service.Syscamp;
 
-import com.frostmourne.camp.domain.User;
+import com.frostmourne.camp.domain.CampSys.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

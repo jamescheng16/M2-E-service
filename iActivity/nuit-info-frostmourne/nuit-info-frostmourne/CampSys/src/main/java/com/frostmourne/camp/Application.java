@@ -1,10 +1,10 @@
 package com.frostmourne.camp;
 
-import com.frostmourne.camp.domain.*;
-import com.frostmourne.camp.service.repository.CampsiteRepository;
-import com.frostmourne.camp.service.repository.HelpRequestRepository;
-import com.frostmourne.camp.service.repository.InformationRepository;
-import com.frostmourne.camp.service.repository.UserRepository;
+import com.frostmourne.camp.domain.CampSys.*;
+import com.frostmourne.camp.service.Syscamp.CampsiteRepository;
+import com.frostmourne.camp.service.Syscamp.HelpRequestRepository;
+import com.frostmourne.camp.service.Syscamp.InformationRepository;
+import com.frostmourne.camp.service.Syscamp.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;

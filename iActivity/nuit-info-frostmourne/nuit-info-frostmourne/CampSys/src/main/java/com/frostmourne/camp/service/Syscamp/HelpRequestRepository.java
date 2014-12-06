@@ -1,7 +1,7 @@
-package com.frostmourne.camp.service.repository;
+package com.frostmourne.camp.service.Syscamp;
 
-import com.frostmourne.camp.domain.HelpRequest;
-import com.frostmourne.camp.domain.HelpRequestType;
+import com.frostmourne.camp.domain.CampSys.HelpRequest;
+import com.frostmourne.camp.domain.CampSys.HelpRequestType;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

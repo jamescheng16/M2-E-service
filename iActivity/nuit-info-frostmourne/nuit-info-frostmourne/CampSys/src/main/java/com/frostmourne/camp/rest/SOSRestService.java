@@ -1,8 +1,8 @@
 package com.frostmourne.camp.rest;
 
-import com.frostmourne.camp.domain.HelpRequest;
-import com.frostmourne.camp.domain.HelpRequestType;
-import com.frostmourne.camp.service.repository.HelpRequestRepository;
+import com.frostmourne.camp.domain.CampSys.HelpRequest;
+import com.frostmourne.camp.domain.CampSys.HelpRequestType;
+import com.frostmourne.camp.service.Syscamp.HelpRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

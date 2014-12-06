@@ -1,4 +1,4 @@
-package com.frostmourne.camp.domain;
+package com.frostmourne.camp.domain.CampSys;
 
 import javax.persistence.*;
 import java.util.Date;

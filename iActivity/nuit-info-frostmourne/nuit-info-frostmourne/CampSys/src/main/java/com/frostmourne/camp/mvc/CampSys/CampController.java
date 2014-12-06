@@ -1,4 +1,4 @@
-package com.frostmourne.camp.mvc;
+package com.frostmourne.camp.mvc.CampSys;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

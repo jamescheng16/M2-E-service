@@ -1,11 +1,11 @@
-package com.frostmourne.camp.mvc;
+package com.frostmourne.camp.mvc.CampSys;
 
 import com.frostmourne.camp.Application;
-import com.frostmourne.camp.domain.HelpRequest;
-import com.frostmourne.camp.domain.HelpRequestType;
-import com.frostmourne.camp.domain.User;
-import com.frostmourne.camp.service.repository.HelpRequestRepository;
-import com.frostmourne.camp.service.repository.UserRepository;
+import com.frostmourne.camp.domain.CampSys.HelpRequest;
+import com.frostmourne.camp.domain.CampSys.HelpRequestType;
+import com.frostmourne.camp.domain.CampSys.User;
+import com.frostmourne.camp.service.Syscamp.HelpRequestRepository;
+import com.frostmourne.camp.service.Syscamp.UserRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
